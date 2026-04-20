@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <nav class="nav-links">
+              
+  <title>Joke Generator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f7f9fc, #dfe9f3);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 500px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      color: #222;
+    }
+
+    p.subtitle {
+      margin-top: 0;
+      margin-bottom: 24px;
+      color: #666;
+      font-size: 1rem;
+    }
+
+    .joke-box {
+      background: #f4f7fb;
+      border-radius: 16px;
+      padding: 24px;
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      border: 1px solid #e4eaf2;
+    }
+
+    #jokeText {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .primary {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .secondary {
+      background: #e5e7eb;
+      color: #222;
+    }
+
+    @media (max-width: 480px) {
+      .app {
+        padding: 22px;
+      }
+
+      #jokeText {
+        font-size: 1.05rem;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>Joke Generator</h1>
+    <p class="subtitle">Click the button for a fresh laugh</p>
+
+    <div class="joke-box">
+      <p id="jokeText">Why don’t skeletons fight each other? They don’t have the guts.</p>
+    </div>
+
+    <div class="buttons">
+      <button class="primary" onclick="generateJoke()">Tell Me a Joke</button>
+      <button class="secondary" onclick="copyJoke()">Copy Joke</button>
+    </div>
+  </div>
+
+  <script>
+    const jokes = [
+      "Why don’t scientists trust atoms? Because they make up everything.",
+      "Why did the scarecrow win an award? Because he was outstanding in his field.",
+      "Why don’t skeletons fight each other? They don’t have the guts.",
+      "What do you call fake spaghetti? An impasta.",
+      "Why did the math book look sad? Because it had too many problems.",
+      "Why did the golfer bring two pairs of pants? In case he got a hole in one.",
+      "What do you call cheese that isn't yours? Nacho cheese.",
+      "Why can’t your nose be 12 inches long? Because then it would be a foot.",
+      "Why did the cookie go to the doctor? Because it felt crummy.",
+      "What do you call a bear with no teeth? A gummy bear.",
+      "Why did the bicycle fall over? Because it was two tired.",
+      "What do you call a fish wearing a bowtie? Sofishticated.",
+      "Why was the computer cold? It left its Windows open.",
+      "What do you call a pile of cats? A meowtain.",
+      "Why did the coffee file a police report? It got mugged."
+    ];
+
+    function generateJoke() {
+      const jokeText = document.getElementById("jokeText");
+      const randomIndex = Math.floor(Math.random() * jokes.length);
+      jokeText.textContent = jokes[randomIndex];
+    }
+
+    function copyJoke() {
+      const joke = document.getElementById("jokeText").textContent;
+
+      navigator.clipboard.writeText(joke)
+        .then(() => {
+          alert("Joke copied to clipboard");
+        })
+        .catch(() => {
+          alert("Could not copy the joke");
+        });
+    }
+  </script>
+</body>
+<footer>
+      <a href="index.html">Home</a></li>
+                <a href="scratch.html">Random</a>
+            </nav>
+</footer>
+</html>
